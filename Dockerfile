@@ -6,5 +6,6 @@ RUN wget -qO- http://mirrors.ocf.berkeley.edu/apache/zeppelin/zeppelin-0.6.0/zep
 RUN ln -nsf /zeppelin-* /zeppelin
 RUN /zeppelin/bin/install-interpreter.sh --name md,jdbc
 
-ENTRYPOINT /zeppelin/bin/zeppelin.sh
+ADD entrypoint.sh /entrypoint.sh
+ENTRYPOINT /entrypoint.sh
 
