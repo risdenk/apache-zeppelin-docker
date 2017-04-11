@@ -11,10 +11,11 @@ RUN apk --no-cache add bash \
 
 WORKDIR $APPDIR
 
-RUN interpreters=' \
+ENV interpreters=' \
   md, \
   jdbc \
-  ' \
-  && bin/install-interpreter.sh --name $(echo $interpreters | tr -d '[[:space:]]')
+  '
+
+RUN bin/install-interpreter.sh --name $(echo $interpreters | tr -d '[[:space:]]')
 
 CMD ["bin/zeppelin.sh"]
